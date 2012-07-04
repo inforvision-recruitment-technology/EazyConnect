@@ -4,10 +4,10 @@
 		'instance'	=> 'instantienaam',
 		
 		// public eazymatch key
-		'key'		=> 'your-private-key',
+		'key'		=> 'public-key',
 		
 		// private secret
-		'secret'	=> 'your-private-secret',
+		'secret'	=> 'private-secret',
 		
 		// debug mode ?
 		'debug'		=> 'true',
