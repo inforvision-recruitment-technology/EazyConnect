@@ -1,17 +1,15 @@
 <?php
 	/**
 	* example to connect with eazymatch and get a list of published jobs
-	* 
-	* minimal version of php needed : 5.2.17
 	*/
 	
+	$rootDir = dirname(dirname(__FILE__));
+	
 	//include the autoloader for eazymatch classes
-	include_once( dirname(__FILE__) . '/EazyConnect/bootstrap.autoload.php' );
+	include_once( $rootDir . '/bootstrap.autoload.php' );
 	
 	//create a new connection using our private configuration
-	$apiConnect = new emolclient_manager_base( include( dirname(__FILE__) . '/EazyConnect/config.php' )  );
-	
-	
+	$apiConnect = new emolclient_manager_base( include( $rootDir . '/config.php' )  );
 	
 	
 	/**
@@ -39,5 +37,7 @@
 	//  TheConnection -> TheController -> TheMethod ( Parameters );
 	$resultArray = $apiConnect->job->getPublished( $limit , $filters , $orderBy );
 	
+	echo '<pre>';
 	var_dump($resultArray);
+	echo '</pre>';
 ?>
