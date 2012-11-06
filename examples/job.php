@@ -11,11 +11,30 @@
 	//create a new connection using our private configuration
 	$apiConnect = new emolclient_manager_base( include( $rootDir . '/config.php' )  );
 	
-	//get the results
-	//  TheConnection -> TheController -> TheMethod ( Parameters );
-	$resultArray = $apiConnect->job->getFullPublished( 1000 );
+	//get the results seperate
+	// WRONG WAY
+	/*
+	$jobData 			= $apiConnect->job->getFullPublished( 1000 );
+	$jobTexts 			= $apiConnect->job->getCustomTexts( 1000 );
+	
+	//combine all job data
+	$resultArray = array(
+		'job' => $jobData,
+		'texts' => $jobTexts,
+		'competenties' => $jobCompetences
+	);
+	*/
+	
+	$jobId = 1009;
+	//get the results trunked
+	//RIGHT WAY
+	$resultArray=array();
+	$trunk = new emolclient_trunk( $apiConnect );
+	$resultArray['job'] = &$trunk->request( 'job', 'getFullPublished', array( $jobId ) );
+	$resultArray['texts'] = &$trunk->request( 'job', 'getCustomTexts', array( $jobId ) );
+	$trunk->execute();
 	
 	echo '<pre>';
-	var_dump($resultArray);
+	print_r($resultArray);
 	echo '</pre>';
 ?>

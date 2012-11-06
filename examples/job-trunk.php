@@ -24,16 +24,16 @@
     $i=0;
     foreach( $jobs as $job ){
     
-        //full job
+        // full job
         $results[$i]['fullJob']       = &$trunk->request( 'job', 'getFullPublished', array($job) );
         
-        //all textareas
+        // all textareas
         $results[$i]['texts']         = &$trunk->request( 'job', 'getCustomTexts', array($job) );
         
-        //competence tree
+        // competence tree
         $results[$i]['competences']   = &$trunk->request( 'job', 'getPublishedCompetence', array($job) );
         
-        //manager/consultant information
+        // manager / consultant information
         $results[$i]['manager']   	  = &$trunk->request( 'job', 'getManagerPublished', array($job) );
         
         $i++;
