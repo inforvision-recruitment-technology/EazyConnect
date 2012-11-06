@@ -55,9 +55,9 @@ class emolclient_connect
     */
     public function __construct($key,$instance, $debug = false)
     {
-        $this->apiKey         = $key;
-        $this->instanceName = $instance;
-        $this->debug = $debug;
+        $this->apiKey         	= $key;
+        $this->instanceName 	= $instance;
+        $this->debug 			= $debug;
 		
     	// check if apiKey is present and instanceName is not empty
         if ( strlen( $this->apiKey ) < 3 || strlen( $this->instanceName ) < 3 )

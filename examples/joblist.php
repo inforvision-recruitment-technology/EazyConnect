@@ -1,6 +1,7 @@
 <?php
 	/**
 	* example to connect with eazymatch and get a list of published jobs
+	* 
 	*/
 	
 	$rootDir = dirname(dirname(__FILE__));

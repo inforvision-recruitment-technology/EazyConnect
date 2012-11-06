@@ -18,17 +18,27 @@ class emolclient_manager_base extends emolclient_connect
 	{
 		$this->setConfig( $config );
 		
+		/**
+		* construct emolclient_connect with the current configuration
+		* 
+		* @var emolclient_connect
+		*/
 		$result = parent::__construct( 
-			$this->config['key'],  
-			$this->config['instance'],  
-			$this->config['debug']
+			$this->config['key'], //api key  
+			$this->config['instance'],  //instance name
+			$this->config['debug'] //debugging
 		);
 		
 		$this->initialValues();
 		
+		//return an instance of emolclient_connect
 		return $result;
 	}
 	
+	/**
+	* rest initial values?
+	* 
+	*/
 	protected function initialValues(){
 		$this->resetKey();
 	}
@@ -64,6 +74,10 @@ class emolclient_manager_base extends emolclient_connect
 		return parent::processProxyException( $e );
 	}
 	
+	/**
+	* when a token is returned we need to hash this and keep it for further calls
+	* 
+	*/
 	public function resetKey(){
 		$key = $this->config['key'];
 		
