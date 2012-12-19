@@ -21,6 +21,7 @@
 *     - Documents
 *         - CV
 *         - Picture
+* 	  - Application
 * 
 * @author EazyMatch
 */

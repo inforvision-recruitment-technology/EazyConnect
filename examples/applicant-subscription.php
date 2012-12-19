@@ -115,7 +115,24 @@
 					'enddate' => '1994-02-01',	
 				)
 			)
-		)
+		),
+		'Documents' => array(
+			'CV' => array(
+	            'name' => 'Mijn-geupload-CV.doc',
+	            'type' => 'doc', //doc / pdf / rtf / txt / docx
+	            'content' => 'XXXXXXXXXXX' //base64 encoded content of file !important
+	        ),
+	        'Picture' => array(
+		        'name' => 'Mijn-Pasfoto.jpg',
+		        'type' => 'jpg', //jpg,gif,png
+		        'content' => 'XXXXXXXXXXX' //base64 encoded content of image !important
+		    )
+		),
+        'Application' => array(
+            'job_id' => $jobId,
+            'motivation' => 'Motivation textfield entered by subscriber',
+            'url' => 'www.myrecruitmentsite.com' //not mandatory
+        )
 	);
 	
 	//  TheConnection -> TheController -> TheMethod ( Parameters );
