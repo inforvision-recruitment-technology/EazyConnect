@@ -9,8 +9,15 @@
 class emolclient_connect 
 {
 	/**
-	 * Key to use while connecting to the EazyCore
+	 * Location of EazyCore
 	 * 
+	 * @var string $serviceUrl
+	 */
+    private $serviceUrl;
+
+	/**
+	 * Key to use while connecting to the EazyCore
+	 *
 	 * @var string $apiKey
 	 */
     private $apiKey;
@@ -53,12 +60,13 @@ class emolclient_connect
     * @param string $instance name of eazymatch instance
     * @param boolean $debug true enables debug mode
     */
-    public function __construct($key,$instance, $debug = false)
+    public function __construct($serviceUrl,$key,$instance, $debug = false)
     {
         $this->apiKey         	= $key;
         $this->instanceName 	= $instance;
+        $this->serviceUrl 	    = $serviceUrl;
         $this->debug 			= $debug;
-		
+
     	// check if apiKey is present and instanceName is not empty
         if ( strlen( $this->apiKey ) < 3 || strlen( $this->instanceName ) < 3 )
         {
@@ -141,6 +149,15 @@ class emolclient_connect
     public function getInstanceName()
     {
        return $this->instanceName;
+    }
+	/**
+	 * get the instance name
+	 *
+	 * @param string $key
+	 */
+    public function getServiceUrl()
+    {
+       return $this->serviceUrl;
     }
 	
 	/**

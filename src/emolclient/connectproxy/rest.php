@@ -14,7 +14,8 @@ abstract class emolclient_connectproxy_rest extends emolclient_connectproxy_abst
 		$this->tryCount++;
 		
 		$time_start = microtime(true);
-		
+
+
 		// collect post variables for service
 		$fields = array(
 			// name of instance
@@ -38,9 +39,11 @@ abstract class emolclient_connectproxy_rest extends emolclient_connectproxy_abst
 		// transform the field format to POST format
 		$fields_string = http_build_query( $fields );
 
+
 		// compile url for apicall
-		$url = $this->serviceUrl . '/v1/' . $this->serviceName . '/' . $method . '.' . $this->format;
-		
+		$url = $this->emolConnect->getServiceUrl() . '/v1/' . $this->serviceName . '/' . $method . '.' . $this->format;
+
+
 		// get requests and requests to the tool controller should not take long
 		$shortRequest = substr($method,0,3) == 'get' || $this->serviceName  == 'tool';
 		
@@ -51,7 +54,8 @@ abstract class emolclient_connectproxy_rest extends emolclient_connectproxy_abst
 		curl_setopt_array( $ch, array(
 			// url for api call
 			CURLOPT_URL 				=> $url,
-			
+            CURLOPT_SSL_VERIFYPEER 	    => false,
+
 			// add post functionality
 			CURLOPT_POST 				=> true,
 			CURLOPT_POSTFIELDS 			=> $fields_string,
@@ -68,7 +72,8 @@ abstract class emolclient_connectproxy_rest extends emolclient_connectproxy_abst
 		
 		// execute the api call
 		$apiResponse= curl_exec($ch);
-		
+
+
 		// check if connection error occured
 		if( curl_errno($ch) )
 		{
@@ -105,7 +110,7 @@ abstract class emolclient_connectproxy_rest extends emolclient_connectproxy_abst
 		
 		// decode the result
 		$apiOutput = $this->decodeResult( $apiResponse );
-		
+
 		$time_end = microtime(true);
 		$time = $time_end - $time_start;
 		

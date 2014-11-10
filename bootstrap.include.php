@@ -42,3 +42,4 @@ include( $emolDir.'/trunk.php' );
  * set configuration for connecting with eazymatch
  */
 emolclient_connectManager::setConfig( include( dirname(__FILE__) . '/config.php' ) );
+

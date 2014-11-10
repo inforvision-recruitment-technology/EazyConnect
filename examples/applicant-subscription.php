@@ -2,14 +2,9 @@
 	/**
 	* example to connect with eazymatch and do a subscription (with job_id)
 	*/
-	
-	$rootDir = dirname(dirname(__FILE__));
-	
-	//include the autoloader for eazymatch classes
-	include_once( $rootDir . '/bootstrap.autoload.php' );
-	
-	//create a new connection using our private configuration
-	$apiConnect = new emolclient_manager_base( include( $rootDir . '/config.php' )  );
+header('Content-Type: text/html; charset=utf-8');
+
+include(dirname(__FILE__) . '/setup.php');
 	
 	
 	/**
@@ -32,19 +27,19 @@
 			'title' => 'Test manager',
 			'contactvia' => 'Google',
 			'Person' => array(
-				'firstname' => 'John',
+				'firstname' => 'Martin',
 				'middlename' => '',
-				'lastname' => 'Doe',
+				'lastname' => 'Janssen',
 				'birthdate' => '1978-04-24',
 				'gender' => 'm', //m=male, f=female
 				'Emailaddresses' => array( //at least 1
 					array(
 						'id' => -1, //minus 1 will tell the core to set this address as the default address
-						'email' => 'johndoe@eazymatch.nl'
+						'email' => 'support@eazymatch.nl'
 					),
 					array(
 						'id' => null,
-						'email' => 'johndoe@eazymatch-at-home.nl'
+						'email' => 'test@eazymatch-at-home.nl'
 					)
 				),
 				'Addresses' => array(
@@ -129,7 +124,7 @@
 		    )
 		),
         'Application' => array(
-            'job_id' => $jobId,
+            'job_id' => isset($_GET['jobId']) ? $_GET['jobId'] : null,
             'motivation' => 'Motivation textfield entered by subscriber',
             'url' => 'www.myrecruitmentsite.com' //not mandatory
         )

@@ -8,12 +8,7 @@
 */
 abstract class emolclient_connectproxy_abstract
 {
-	/**
-	 *  EazyCore root url
-	 * 
-	 * @var string $serviceUrl
-	 */
-	protected $serviceUrl = 'https://core.eazymatch.net';
+
 	
 	/**
 	 * reference to emolclient_connect instance
@@ -41,7 +36,7 @@ abstract class emolclient_connectproxy_abstract
 	 * 
 	 * @var int $tryCount
 	 */
-	private $tryCount = 0;
+	protected $tryCount = 0;
 
 	/**
 	 * contructe the connection to the eazycore

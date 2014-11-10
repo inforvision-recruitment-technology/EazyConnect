@@ -8,6 +8,7 @@ class emolclient_manager_base extends emolclient_connect
 	 * core connection keys
 	 */
     protected $config = array(
+		'serviceurl' 	=> '',
 		'instance' 	=> '',
 		'key' 		=> '',
 		'secret' 	=> '',
@@ -23,10 +24,15 @@ class emolclient_manager_base extends emolclient_connect
 		* 
 		* @var emolclient_connect
 		*/
-		$result = parent::__construct( 
-			$this->config['key'], //api key  
+
+		$result = parent::__construct(
+            $this->config['serviceurl'],  //core location
+
+            $this->config['key'], //api key
+
 			$this->config['instance'],  //instance name
-			$this->config['debug'] //debugging
+
+            $this->config['debug'] //debugging
 		);
 		
 		$this->initialValues();
