@@ -14,6 +14,8 @@ include(dirname(__FILE__) . '/setup.php');
 //the limit on how many jobs to fetch, ordered by date
 $limit = 10;
 
+//to fetch all competences run $apiConnect->competence->tree();
+
 //filters, a manager function 50km round Amsterdam
 $filters = array(
     'free' => array(
@@ -22,6 +24,9 @@ $filters = array(
     'location' => array(
         'city' => 'Amsterdam',
         'range' => 50000 //range in meters
+    ),
+    'compentence'=> array(
+        124,187,882,492 //the ids of competences in the competence table     
     )
 );
 
